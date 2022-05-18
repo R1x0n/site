@@ -1,4 +1,4 @@
-baseURL = 'http://127.0.0.1:1313'
+baseURL = 'https://r1x0n.github.io/site/'
 languageCode = 'en-us'
 title = 'R1x0n'
 theme = "m10c"
