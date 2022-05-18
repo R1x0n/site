@@ -23,8 +23,8 @@ I now attach some solutions I designed to solve Cyber ​​Challenge exercises:
 
 ### Binary PWN
 
-* [Buffer Overflow, easy leak](/pages/cyber-challenge/easy-leak/)
-* [Buffer overflow, shell code](/pages/cyber-challenge/shell-code/)
+* [Buffer Overflow, easy leak](pages/cyber-challenge/easy-leak/)
+* [Buffer overflow, shell code](pages/cyber-challenge/shell-code/)
 * Buffer Overflow, good_hacker
 
 ### Reverse engineering
@@ -42,4 +42,4 @@ I now attach some solutions I designed to solve Cyber ​​Challenge exercises:
 This was a very interesting experience for me, which gave me the opportunity to learn about many topics and techniques unknown to me.
 
 I, therefore, thank the Milan Polytechnic and especially Prof. Stefano Zanero for allowing me to participate in this course.
-It was for me a great honor and also a great gratification to receive a certificate for participation personally signed by Prof. Zanero. [(link)](/static/cert/cyberchallenge.pdf)
+It was for me a great honor and also a great gratification to receive a certificate for participation personally signed by Prof. Zanero. [(link)](static/cert/cyberchallenge.pdf)
