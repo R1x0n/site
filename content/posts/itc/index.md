@@ -55,7 +55,7 @@ The list of exercises I’ve done is as follow:
 <br>
 
 
-<img src="/posts/itc/static/pic.jpg" width="40%" height="40%" align="center" class="center">
+<img src="posts/itc/static/pic.jpg" width="40%" height="40%" align="center" class="center">
 
 Exercise after exercise I was taught the basics of approaching an infrastructure to repent of, what to focus on, where to find useful resources, and much more.
 It was fortunate to have done this period after the conclusion of “CyberChallenge”, so as to be able to refine all the info that “CyberChallenge” has left in my mind in a somewhat dispersed and sometimes unclear way.

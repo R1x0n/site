@@ -3,7 +3,7 @@ title: "Cyber Challenge"
 date: 2019-06-12
 draft: false
 tags: ["Experiences"]
-image: "/posts/cyber-challenge/static/logo.png"
+image: "posts/cyber-challenge/static/logo.png"
 ---
 
 Cyber Challenge, 3-month course in which we received a “training” on various topics of computer security.
@@ -16,7 +16,7 @@ Each lesson deals with a specific vulnerability inherent to a particular topic.
 
 All the lessons begin with two hours of theory and end with a very long practical part, wherewith the support of teachers an attempt is made to solve as many challenges as possible.
 Below is the complete list of all the topics and vulnerabilities discussed:
-<img src="/posts/cyber-challenge/static/summary.png" width="35%" height="35%" align="center" class="center">
+<img src="posts/cyber-challenge/static/summary.png" width="35%" height="35%" align="center" class="center">
 
 
 I now attach some solutions I designed to solve Cyber ​​Challenge exercises:

