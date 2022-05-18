@@ -1,0 +1,19 @@
+baseURL = 'http://127.0.0.1:1313'
+languageCode = 'en-us'
+title = 'R1x0n'
+theme = "m10c"
+tags = ["Experiences", "Binary-Exploit", "Writeup", "HackTheBox"]
+[params.description]
+[[menu.main]]
+  identifier = "tags"
+  name = "Tags"
+  url = "/tags/"
+[[menu.main]]
+  indentifier = "certifications"
+  name = "Certifications"
+  url="/certifications/"
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+

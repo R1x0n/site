@@ -1,0 +1,30 @@
+{{ define "main" }}
+  <article>
+
+	  <link rel="stylesheet" href="static/utils/style.css">
+	      <div class="text">
+		                      <h1 style='text-align:center'><a target="_parent" href="#" style="text-decoration:none;color:white;">Riccardo Brigatti</a></h1>
+<p style="text-align:center"><a target="_parent" href="https://brigatti.info" style="text-decoration:none;color:white">- Personal blog -</a></p>
+	      </div>
+
+    <ul class="posts-list">
+        <li class="posts-list-item">
+		{{ range where .Paginator.Pages "Type" "!=" "page" }}
+          <a class="posts-list-item-title" href="{{ .Permalink }}">{{ .Title }}
+	 	 <br>
+	  	<img src="{{ .Params.image | default "" }}" class="img-list">
+	 </a>
+          <span class="posts-list-item-description">
+            {{ partial "icon.html" (dict "ctx" $ "name" "calendar") }}
+            {{ .PublishDate.Format "Jan 2, 2006" }}
+            -
+            {{ partial "icon.html" (dict "ctx" $ "name" "clock") }}
+            {{ .ReadingTime }} min read
+          </span>
+	  <hr>
+        </li>
+      {{ end }}
+    </ul>
+    {{ partial "pagination.html" $ }}
+  </article>
+{{ end }}
