@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>HackTheBox on R1x0n</title>
-    <link>http://127.0.0.1:1313/tags/hackthebox/</link>
+    <link>https://r1x0n.github.io/site/tags/hackthebox/</link>
     <description>Recent content in HackTheBox on R1x0n</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 05 Jun 2020 00:00:00 +0000</lastBuildDate><atom:link href="http://127.0.0.1:1313/tags/hackthebox/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 05 Jun 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://r1x0n.github.io/site/tags/hackthebox/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Magic - HackTheBox</title>
-      <link>http://127.0.0.1:1313/posts/magic/</link>
+      <link>https://r1x0n.github.io/site/posts/magic/</link>
       <pubDate>Fri, 05 Jun 2020 00:00:00 +0000</pubDate>
       
-      <guid>http://127.0.0.1:1313/posts/magic/</guid>
+      <guid>https://r1x0n.github.io/site/posts/magic/</guid>
       <description>Become User —- Enumeration —- The first thing that I do is scan for the opened ports:
 nmap -sC -sV -oA nmap 10.10.10.185 This command returns me the following result:
 # Nmap 7.80 scan initiated Sun May 31 22:17:52 2020 as: nmap -sV -sC -oA nmap 10.10.10.185 Nmap scan report for 10.10.10.185 Host is up (0.044s latency). Not shown: 998 closed ports PORT STATE SERVICE VERSION 22/tcp open ssh OpenSSH 7.</description>

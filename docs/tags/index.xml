@@ -2,44 +2,44 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on R1x0n</title>
-    <link>http://127.0.0.1:1313/tags/</link>
+    <link>https://r1x0n.github.io/site/tags/</link>
     <description>Recent content in Tags on R1x0n</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 02 Dec 2021 11:44:31 +0100</lastBuildDate><atom:link href="http://127.0.0.1:1313/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 02 Dec 2021 11:44:31 +0100</lastBuildDate><atom:link href="https://r1x0n.github.io/site/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Binary-Exploit</title>
-      <link>http://127.0.0.1:1313/tags/binary-exploit/</link>
+      <link>https://r1x0n.github.io/site/tags/binary-exploit/</link>
       <pubDate>Thu, 02 Dec 2021 11:44:31 +0100</pubDate>
       
-      <guid>http://127.0.0.1:1313/tags/binary-exploit/</guid>
+      <guid>https://r1x0n.github.io/site/tags/binary-exploit/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Writeup</title>
-      <link>http://127.0.0.1:1313/tags/writeup/</link>
+      <link>https://r1x0n.github.io/site/tags/writeup/</link>
       <pubDate>Thu, 02 Dec 2021 11:44:31 +0100</pubDate>
       
-      <guid>http://127.0.0.1:1313/tags/writeup/</guid>
+      <guid>https://r1x0n.github.io/site/tags/writeup/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Experiences</title>
-      <link>http://127.0.0.1:1313/tags/experiences/</link>
+      <link>https://r1x0n.github.io/site/tags/experiences/</link>
       <pubDate>Wed, 17 Feb 2021 00:00:00 +0000</pubDate>
       
-      <guid>http://127.0.0.1:1313/tags/experiences/</guid>
+      <guid>https://r1x0n.github.io/site/tags/experiences/</guid>
       <description></description>
     </item>
     
     <item>
       <title>HackTheBox</title>
-      <link>http://127.0.0.1:1313/tags/hackthebox/</link>
+      <link>https://r1x0n.github.io/site/tags/hackthebox/</link>
       <pubDate>Fri, 05 Jun 2020 00:00:00 +0000</pubDate>
       
-      <guid>http://127.0.0.1:1313/tags/hackthebox/</guid>
+      <guid>https://r1x0n.github.io/site/tags/hackthebox/</guid>
       <description></description>
     </item>
     
