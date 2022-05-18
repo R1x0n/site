@@ -51,4 +51,4 @@ lib
 ```
 
 The following animation will shows an example of the executable at work:
-<img src="posts/defl8/static/defl8gif.gif" width="50%" height="50%" align="center" class="center">
+<img src="static/defl8gif.gif" width="50%" height="50%" align="center" class="center">
