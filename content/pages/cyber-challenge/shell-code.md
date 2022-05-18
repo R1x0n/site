@@ -5,6 +5,16 @@ tags: ["Binary-Exploit","Writeup"]
 draft: false
 type: page
 ---
+
+<style>
+.logo{
+display: none !important;
+}
+
+</style>
+
+
+
 ## Goal of the exercise
 
 Have a shell and print the contents of the flag file.
@@ -14,17 +24,17 @@ Have a shell and print the contents of the flag file.
 ### See if there are any protections:
 I see it with "checksec" command:
 
-<img src="static/shell-checksec.png" width="70%" height="70%" align="center" class="center">
+<img src="/site/posts/cyber-challenge/static/shell-checksec.png" width="70%" height="70%" align="center" class="center">
 Apparently the program has no protection.
 
 ### What the program uses:
 I see it with "ltrace" command:
-<img src="static/shell-ltrace.png" width="70%" height="70%" align="center" class="center">
+<img src="/site/posts/cyber-challenge/static/shell-ltrace.png" width="70%" height="70%" align="center" class="center">
 
 I want to know more about "puts" and "read":
-<img src="static/shell-puts.png" width="70%" height="70%" align="center" class="center">
+<img src="/site/posts/cyber-challenge/static/shell-puts.png" width="70%" height="70%" align="center" class="center">
 
-<img src="static/shell-read.png" width="70%" height="70%" align="center" class="center">
+<img src="/site/posts/cyber-challenge/static/shell-read.png" width="70%" height="70%" align="center" class="center">
 
 ## Decompiled C code:
 main():
@@ -67,7 +77,7 @@ The C code has nothing interesting, so I have to write it myself.
 
 I can see it from the Assembly code to the "prog()" function:
 
-<img src="static/shell-assembly.png" width="70%" height="70%" align="center" class="center">
+<img src="/site/posts/cyber-challenge/static/shell-assembly.png" width="70%" height="70%" align="center" class="center">
 The stack is assigned 0x3f8 bytes of space for the variables.
 
 ```bash
@@ -90,7 +100,7 @@ So 1016 bytes, It's definitely enough space.
 ### I need to know if I can take control of the return address:
 I can make it with a “Cyclic” string:
 
-<img src="static/shell-string.png" width="70%" height="70%" align="center" class="center">
+<img src="/site/posts/cyber-challenge/static/shell-string.png" width="70%" height="70%" align="center" class="center">
 
 ```bash
 cereal@killer-VirtualBox:~/Desktop/challenge/shellcode$ cyclic -l 0x6b616164
@@ -108,13 +118,13 @@ print(payload)
 ```
 Result:
 
-<img src="static/shell-test.png" width="70%" height="70%" align="center" class="center">
+<img src="/site/posts/cyber-challenge/static/shell-test.png" width="70%" height="70%" align="center" class="center">
 EIP its perfectly overwritten with "41414141". This confirms that there are 1012 bytes first.
 ### I need to know where I start writing in memory:
 With a breakpoint immediately after my input, I can see the memory layout:
 
 
-<img src="static/shell-memory.png" width="70%" height="70%" align="center" class="center">
+<img src="/site/posts/cyber-challenge/static/shell-memory.png" width="70%" height="70%" align="center" class="center">
 Now in know that I start writing in these addresses, one of the first will be fine.
 ## Final exploit writing
 x.py:
@@ -142,4 +152,4 @@ sys.stdout.flush()
 In this way, I first added some code to my liking and later made sure the program jumps in it!
 Result:
     
-<img src="static/shell-result.png" width="70%" height="70%" align="center" class="center">
+<img src="/site/posts/cyber-challenge/static/shell-result.png" width="70%" height="70%" align="center" class="center">

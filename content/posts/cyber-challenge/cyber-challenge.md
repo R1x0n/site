@@ -3,7 +3,7 @@ title: "Cyber Challenge"
 date: 2019-06-12
 draft: false
 tags: ["Experiences"]
-image: "posts/cyber-challenge/static/logo.png"
+image: "/site/posts/cyber-challenge/static/logo.png"
 ---
 
 Cyber Challenge, 3-month course in which we received a “training” on various topics of computer security.
@@ -16,15 +16,15 @@ Each lesson deals with a specific vulnerability inherent to a particular topic.
 
 All the lessons begin with two hours of theory and end with a very long practical part, wherewith the support of teachers an attempt is made to solve as many challenges as possible.
 Below is the complete list of all the topics and vulnerabilities discussed:
-<img src="static/summary.png" width="35%" height="35%" align="center" class="center">
+<img src="/site/posts/cyber-challenge/static/summary.png" width="35%" height="35%" align="center" class="center">
 
 
 I now attach some solutions I designed to solve Cyber ​​Challenge exercises:
 
 ### Binary PWN
 
-* [Buffer Overflow, easy leak](pages/cyber-challenge/easy-leak/)
-* [Buffer overflow, shell code](pages/cyber-challenge/shell-code/)
+* [Buffer Overflow, easy leak](/site/pages/cyber-challenge/easy-leak/)
+* [Buffer overflow, shell code](/site/pages/cyber-challenge/shell-code/)
 * Buffer Overflow, good_hacker
 
 ### Reverse engineering

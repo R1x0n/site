@@ -3,7 +3,7 @@ title: "Magic - HackTheBox"
 date: 2020-06-05
 draft: false 
 tags: ["HackTheBox", "Writeup"]
-image: "posts/magic/static/logo.png"
+image: "/site/posts/magic/static/logo.png"
 ---
 ## Become User
 

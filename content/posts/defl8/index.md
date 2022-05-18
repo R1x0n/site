@@ -3,7 +3,7 @@ title: "Defl8"
 date: 2021-02-17
 tags: ["Experiences"]
 draft: false
-image: "posts/defl8/static/logo.png"
+image: "/site/posts/defl8/static/logo.png"
 ---
 
 In this post, I want to speak about a project that I made as a semester-work for the “[Algorithms and data structures](https://www.supsi.ch/dti/bachelor/ingegneria-informatica/piano-studio-offerta-formativa/piano-studio/dettaglio-piano-studio/dettaglio-modulo.158172.backLink.b1046c04-728f-44a0-b4ad-5a72df905579&ps=3188.html)” module in SUPSI.

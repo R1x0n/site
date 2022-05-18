@@ -5,11 +5,20 @@ draft: false
 tags: ["Binary-Exploit","Writeup"]
 type: page
 ---
+
+<style>
+.logo{
+display: none !important;
+}
+
+</style>
+
+
 ## Goal of the exercise
 Have the program to print the contents of the flag file.
 ## Research And Reverse Engineering Test
 See if there are any protections:
-<img src="static/checksec.png" width="50%" height="50%" align="center" class="center">
+<img src="/site/posts/cyber-challenge/static/checksec.png" width="50%" height="50%" align="center" class="center">
 It appears to be only “NX” enabled.
 
 ## Decompiled C code of the executable:
@@ -53,12 +62,12 @@ int __cdecl __noreturn main(int argc, const char **argv, const char **envp)
 
 ### Let’s try the program:
 
-<img src="static/program.png" width="1000%" height="100%" align="center" class="center">
+<img src="/site/posts/cyber-challenge/static/program.png" width="1000%" height="100%" align="center" class="center">
 Actually the program printed the string to which *v7 points.
 
 ## Actual Analysis And Exploitation Begins Here
 Let’s try to take control of “RIP” using a Cyclic string:
-<img src="static/ripReg.png" width="70%" height="70%" align="center" class="center">
+<img src="/site/posts/cyber-challenge/static/ripReg.png" width="70%" height="70%" align="center" class="center">
 The program goes into error due to a fault address, but apparently it is not the value we entered.
 We can check it with a Cyclic query:
 ```bash
@@ -67,7 +76,7 @@ rixon@killer-VirtualBox:~/Desktop/challenge/easyleak$ cyclic -l 0x7ffff7a5bcc0
 ```
 This shows the presence of control on the stack!
 ## Assembly code analysis
-<img src="static/assembly.png" width="70%" height="70%" align="center" class="center">
+<img src="/site/posts/cyber-challenge/static/assembly.png" width="70%" height="70%" align="center" class="center">
 
 Pointers are initialized in the red outline, in sequence:
 
@@ -77,11 +86,11 @@ Pointers are initialized in the red outline, in sequence:
 
 So our goal is to change "0x4008c0" in something else.
 ### Let's see how
-<img src="static/strncmp.png" width="50%" height="50%" align="center" class="center">
+<img src="/site/posts/cyber-challenge/static/strncmp.png" width="50%" height="50%" align="center" class="center">
 The "strncmp" is done in the red outline, so the flag value is in this memory zone. Precisely in "0x6010a0".
 
 Let's see where these values are stored in memory thanks to a breakpoint immediately after the "gets":
-<img src="static/value.png" width="50%" height="50%" align="center" class="center">
+<img src="/site/posts/cyber-challenge/static/value.png" width="50%" height="50%" align="center" class="center">
 ### So the script we need is the following (x.py):
 ```python
 import struct, sys 
@@ -92,7 +101,7 @@ print(payload)
 sys.stdout.flush()
 ```
 ### The result of the script it's the following:
-<img src="static/flag.png" width="70%" height="70%" align="center" class="center">
+<img src="/site/posts/cyber-challenge/static/flag.png" width="70%" height="70%" align="center" class="center">
 As we can see now the program prints the flag value.
 
 ## JOB DONE!

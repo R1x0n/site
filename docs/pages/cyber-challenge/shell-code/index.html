@@ -2,7 +2,7 @@
 <html lang="en-us">
   <head>
     <title>Shell Code // R1x0n</title>
-    <link rel="stylesheet" type="text/css" href="static/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/site/static/css/style.css">
     <link rel="shortcut icon" href="/favicon.ico" />
       <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 
@@ -17,13 +17,13 @@
     
     <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Shell Code"/>
-<meta name="twitter:description" content="Goal of the exercise Have a shell and print the contents of the flag file.
+<meta name="twitter:description" content=".logo{ display: none !important; }  Goal of the exercise Have a shell and print the contents of the flag file.
 Research And Reverse Engineering Test See if there are any protections: I see it with &ldquo;checksec&rdquo; command:
 Apparently the program has no protection. What the program uses: I see it with &ldquo;ltrace&rdquo; command: I want to know more about &ldquo;puts&rdquo; and &ldquo;read&rdquo;: Decompiled C code: main():
 int __cdecl main(int argc, const char **argv, const char **envp) { setvbuf(stdin, 0, 2, 0); setvbuf(stdout, 0, 2, 0); puts( &#34; _________."/>
 
     <meta property="og:title" content="Shell Code" />
-<meta property="og:description" content="Goal of the exercise Have a shell and print the contents of the flag file.
+<meta property="og:description" content=".logo{ display: none !important; }  Goal of the exercise Have a shell and print the contents of the flag file.
 Research And Reverse Engineering Test See if there are any protections: I see it with &ldquo;checksec&rdquo; command:
 Apparently the program has no protection. What the program uses: I see it with &ldquo;ltrace&rdquo; command: I want to know more about &ldquo;puts&rdquo; and &ldquo;read&rdquo;: Decompiled C code: main():
 int __cdecl main(int argc, const char **argv, const char **envp) { setvbuf(stdin, 0, 2, 0); setvbuf(stdout, 0, 2, 0); puts( &#34; _________." />
@@ -46,14 +46,15 @@ int __cdecl main(int argc, const char **argv, const char **envp) { setvbuf(stdin
           <a class="app-header-menu-item" href="/site/tags/">Tags</a>
       </nav>
       
-      <p>👶🏽 : 1998, Lugano CH <br>📍: Lugano CH</p>
+      <p>👶🏽 : 1998, Lugano CH <br>📍: Lugano CH<br><a href="javascript:alert('not implemented\n sorry ¯\\_(ツ)_/¯')">📧</a></p>
+      
 
 
 
       
 
       
-        <script src='https://cldup.com/S6Ptkwu_qA.js'></script><script  src="static/utils/script.js"></script>
+        <script src='https://cldup.com/S6Ptkwu_qA.js'></script><script  src="/site/static/utils/script.js"></script>
     </header>
     <main class="app-container">
       
@@ -65,19 +66,25 @@ int __cdecl main(int argc, const char **argv, const char **envp) { setvbuf(stdin
       </h1>
     </header>
     <div class="post-content">
-      <h2 id="goal-of-the-exercise">Goal of the exercise</h2>
+      <style>
+.logo{
+display: none !important;
+}
+
+</style>
+<h2 id="goal-of-the-exercise">Goal of the exercise</h2>
 <p>Have a shell and print the contents of the flag file.</p>
 <h2 id="research-and-reverse-engineering-test">Research And Reverse Engineering Test</h2>
 <h3 id="see-if-there-are-any-protections">See if there are any protections:</h3>
 <p>I see it with &ldquo;checksec&rdquo; command:</p>
-<img src="static/shell-checksec.png" width="70%" height="70%" align="center" class="center">
+<img src="/site/posts/cyber-challenge/static/shell-checksec.png" width="70%" height="70%" align="center" class="center">
 Apparently the program has no protection.
 <h3 id="what-the-program-uses">What the program uses:</h3>
 <p>I see it with &ldquo;ltrace&rdquo; command:
-<img src="static/shell-ltrace.png" width="70%" height="70%" align="center" class="center"></p>
+<img src="/site/posts/cyber-challenge/static/shell-ltrace.png" width="70%" height="70%" align="center" class="center"></p>
 <p>I want to know more about &ldquo;puts&rdquo; and &ldquo;read&rdquo;:
-<img src="static/shell-puts.png" width="70%" height="70%" align="center" class="center"></p>
-<img src="static/shell-read.png" width="70%" height="70%" align="center" class="center">
+<img src="/site/posts/cyber-challenge/static/shell-puts.png" width="70%" height="70%" align="center" class="center"></p>
+<img src="/site/posts/cyber-challenge/static/shell-read.png" width="70%" height="70%" align="center" class="center">
 <h2 id="decompiled-c-code">Decompiled C code:</h2>
 <p>main():</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">int</span> <span style="color:#66d9ef">__cdecl</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">int</span> argc, <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">**</span>argv, <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">**</span>envp)
@@ -109,7 +116,7 @@ Apparently the program has no protection.
 <h2 id="actual-analysis-and-exploitation-begins-here">ACTUAL ANALYSIS AND EXPLOITATION BEGINS HERE</h2>
 <h3 id="i-need-to-know-if-there-is-space-to-write-a-shellcode">I need to know if there is space to write a shellcode:</h3>
 <p>I can see it from the Assembly code to the &ldquo;prog()&rdquo; function:</p>
-<img src="static/shell-assembly.png" width="70%" height="70%" align="center" class="center">
+<img src="/site/posts/cyber-challenge/static/shell-assembly.png" width="70%" height="70%" align="center" class="center">
 The stack is assigned 0x3f8 bytes of space for the variables.
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cereal@killer-VirtualBox:~/Desktop/challenge/l0ngl0ng$ ipython
 Python 2.7.12 <span style="color:#f92672">(</span>default, Nov <span style="color:#ae81ff">12</span> 2018, 14:36:49<span style="color:#f92672">)</span> 
@@ -128,7 +135,7 @@ Out<span style="color:#f92672">[</span>1<span style="color:#f92672">]</span>: <s
 </code></pre></div><p>So 1016 bytes, It&rsquo;s definitely enough space.</p>
 <h3 id="i-need-to-know-if-i-can-take-control-of-the-return-address">I need to know if I can take control of the return address:</h3>
 <p>I can make it with a “Cyclic” string:</p>
-<img src="static/shell-string.png" width="70%" height="70%" align="center" class="center">
+<img src="/site/posts/cyber-challenge/static/shell-string.png" width="70%" height="70%" align="center" class="center">
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cereal@killer-VirtualBox:~/Desktop/challenge/shellcode$ cyclic -l 0x6b616164
 <span style="color:#ae81ff">1012</span>
 </code></pre></div><p>The cyclic query confirms that the return address has been overwritten with part of my string. Exactly after 1012 bytes (or characters).
@@ -140,11 +147,11 @@ jmp_address <span style="color:#f92672">=</span> struct<span style="color:#f9267
 payload <span style="color:#f92672">=</span> junk<span style="color:#f92672">+</span>jmp_address
 <span style="color:#66d9ef">print</span>(payload)
 </code></pre></div><p>Result:</p>
-<img src="static/shell-test.png" width="70%" height="70%" align="center" class="center">
+<img src="/site/posts/cyber-challenge/static/shell-test.png" width="70%" height="70%" align="center" class="center">
 EIP its perfectly overwritten with "41414141". This confirms that there are 1012 bytes first.
 ### I need to know where I start writing in memory:
 With a breakpoint immediately after my input, I can see the memory layout:
-<img src="static/shell-memory.png" width="70%" height="70%" align="center" class="center">
+<img src="/site/posts/cyber-challenge/static/shell-memory.png" width="70%" height="70%" align="center" class="center">
 Now in know that I start writing in these addresses, one of the first will be fine.
 ## Final exploit writing
 x.py:
@@ -167,7 +174,7 @@ sys<span style="color:#f92672">.</span>stdout<span style="color:#f92672">.</span
 </ul>
 <p>In this way, I first added some code to my liking and later made sure the program jumps in it!
 Result:</p>
-<img src="static/shell-result.png" width="70%" height="70%" align="center" class="center">
+<img src="/site/posts/cyber-challenge/static/shell-result.png" width="70%" height="70%" align="center" class="center">
 
     </div>
     <div class="post-footer">

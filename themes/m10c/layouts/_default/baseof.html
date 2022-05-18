@@ -2,7 +2,7 @@
 <html lang="{{ .Site.LanguageCode | default "en-us" }}">
   <head>
     <title>{{ if .IsHome }}{{ .Site.Title}}{{ else }}{{ .Title }} // {{ .Site.Title }}{{ end }}</title>
-    <link rel="stylesheet" type="text/css" href="static/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/site/static/css/style.css">
     <link rel="shortcut icon" href="{{ .Site.Params.favicon | default "/favicon.ico" }}" />
       <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 
@@ -36,14 +36,15 @@
       </nav>
       {{- end }}
       <!-- <p>{{ .Site.Params.description | default "Place Holder" }}</p> -->
-      <p>👶🏽 : 1998, Lugano CH <br>📍: Lugano CH</p>
+      <p>👶🏽 : 1998, Lugano CH <br>📍: Lugano CH<br><a href="javascript:alert('not implemented\n sorry ¯\\_(ツ)_/¯')">📧</a></p>
+      
 
 
 
       <!-- partial:index.partial.html -->
 
       <!-- partial -->
-        <script src='https://cldup.com/S6Ptkwu_qA.js'></script><script  src="static/utils/script.js"></script>
+        <script src='https://cldup.com/S6Ptkwu_qA.js'></script><script  src="/site/static/utils/script.js"></script>
 
 
 
