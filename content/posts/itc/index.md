@@ -3,7 +3,7 @@ title: "In The Cyber"
 date: 2019-06-22
 draft: false 
 tags: ["Experiences"]
-image: "/posts/itc/static/logo.jpg"
+image: "posts/itc/static/logo.jpg"
 ---
 <a href='https://www.inthecyber.com/it/'>InTheCyber</a> is a company with the aim of increasing the real effectiveness of defense systems adopted by companies to protect their information assets and their strategic assets, so it boasts an excellent team both in the Offensive and in Defensive Security.
 
